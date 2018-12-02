@@ -1,0 +1,209 @@
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
+dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
+pre, /* text formatting elements 文本格式元素 */
+fieldset, lengend, button, input, textarea, /* form elements 表单元素 */
+th, td { /* table elements 表格元素 */
+    margin: 0;
+    padding: 0;
+}
+body,
+button, input, select, textarea { /* for ie */
+    /*font: 12px/1 Tahoma, Helvetica, Arial, "宋体", sans-serif;*/
+    font: 12px/1 Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif; /* 用 ascii 字符表示，使得在任何编码下都无问题 */
+}
+
+h1 { font-size: 18px; /* 18px / 12px = 1.5 */ }
+h2 { font-size: 16px; }
+h3 { font-size: 14px; }
+h4, h5, h6 { font-size: 100%; }
+
+body{
+    background-repeat: no-repeat;
+    background-image: url("/images/timg.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+    text-align: center;
+}
+#body{
+    width: 300px;
+    height: auto;
+    min-height: 300px;
+    position: relative;
+    top: 200px;
+    margin: 0px auto;
+    border: solid gray 1px;
+}
+#head{
+    height: 36px;
+    width: auto;
+    padding-bottom:2px;
+    border-bottom: 2px solid #060606;
+    background: lightblue;
+    text-align: center;
+    font-size: 18px;
+}
+#head span{
+    float: left;
+    width: 50%;
+    height: 100%;
+    position: relative;
+}
+span .login_n{
+    height: 30px;
+    margin: auto;
+    line-height: 30px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    color: gray;
+}
+.login_n:hover{
+    color: black;
+    cursor: pointer;
+}
+.login_e:hover{
+    color: black;
+    cursor: pointer;
+}
+span .login_e{
+    height: 30px;
+    margin: auto;
+    line-height: 30px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    color: gray;
+}
+#content{
+    height:auto!important;
+    min-height: 200px;
+    width: 100%;
+    position: relative;
+}
+#login_n{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0;
+}
+#login_e{
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+form{
+    text-align: center;
+}
+#tipcontent{
+    height: 32px;
+    line-height: 32px;
+    color: red;
+    text-align: left;
+    margin:0px auto;
+    width: 80%
+    
+}
+#tips{
+    display: none;
+    font-size: 14px;
+}
+#login_e #nickN{
+    width: 80%;
+    height: 32px;
+    border-radius: 3px;
+    font-size: 18px;
+    line-height: 24px;
+    margin-top: 44px;
+    margin-bottom: 8px;
+}
+#login_e #loginNoPass{
+    height: 32px;
+    border: 1px sloid black;
+    border-radius: 3px;
+    width: 80%;
+    background: lightskyblue;
+    font-size: 18px;
+    margin-top: 4px;
+}
+#login_n #account{
+    width: 80%;
+    height: 32px;
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 8px;
+}
+#login_n #passwd{
+    width: 80%;
+    height: 32px;
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 4px;
+}
+#check{
+    margin-top: 4px;
+    width: 80%;
+    height: 18px;
+    text-align: left;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+#check a{
+    width: 16px;
+    height: 16px;
+    border: 1px solid black;
+    margin-right: 10px;
+    float: left;
+}
+#check span{
+    float: left;
+    line-height: 18px;
+    font-size: 12px;
+}
+#check span:hover{
+    cursor: pointer;
+}
+.clearf{
+    clear: both;
+}
+#login,#register{
+    height: 32px;
+    border: 1px sloid black;
+    border-radius: 3px;
+    width: 80%;
+    background: lightskyblue;
+    font-size: 18px;
+    margin-top: 4px;
+    color: black;
+}
+
+#footer{
+    margin-top: 4px;
+    font-size: 14px;
+}
+#login:hover{
+    background: lightblue;
+}
+#register:hover{
+    background: lightblue;
+}
+#account.change::-webkit-input-placeholder,#passwd.change::-webkit-input-placeholder {
+    color: #c6c6c6;
+}
+#account.change::-moz-placeholder,#passwd.change::-moz-placeholder {
+    color: #c6c6c6;
+}
+#account.change::-ms-input-placeholder,#passwd.change::-ms-input-placeholder {
+    color: #c6c6c6;
+}

@@ -1,0 +1,37 @@
+# Chinese_Chess
+
+登录分为两种:一种是有账号的注册用户登录,一种是无账号的游客登录
+本页面请求
+请求路径:login
+请求方式:GET
+请求参数:无
+要求回调数据:login.html
+
+
+无账号登录
+请求路径:login/auth
+请求方式:POST
+请求参数:nickN:游客账号
+       ID:0
+需求回调数据
+	成功:临时access_token,用户下线后销毁
+	失败:失败提示,result:Fail,error:大概原因
+注册用户登录分为两步
+1.验证账号有效性
+请求路径:login/auth
+请求方式:POST
+请求参数:usr:用户名
+       Psw:用户密码sha1值
+       hasAuth:false
+       ID:1
+需求回调数据
+	成功:access_token,时间7天,7天后删除,7天内同用户重复提交登录请求,也删除
+	失败:失败提示,result:Fail,error:大概原因
+2.第一步验证成功后,根据第一步获得的access_token进行登录
+请求路径:login/home
+请求方式:POST
+请求参数:access_token:第一步获取的access_token
+要求回调数据
+	成功:result:OK
+	失败:result:Fail,reason:大概原因
+	
