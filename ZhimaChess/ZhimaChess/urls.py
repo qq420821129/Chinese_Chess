@@ -27,5 +27,5 @@ urlpatterns = [
     url(r'^images/(?P<path>.*)$', serve, {'document_root': BASE_DIR + '/static/images'}),
     url(r'^js/(?P<path>.*)$', serve, {'document_root': BASE_DIR + '/static/js'}),
     url(r'^css/(?P<path>.*)$', serve, {'document_root': BASE_DIR  + '/static/css'}),
-    url(r"^test$",views.hello)
+    url(r"^test$",views.hello,name="test")
 ]

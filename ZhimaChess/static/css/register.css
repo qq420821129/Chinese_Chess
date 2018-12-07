@@ -1,0 +1,190 @@
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
+dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
+pre, /* text formatting elements 文本格式元素 */
+fieldset, lengend, button, input, textarea, /* form elements 表单元素 */
+th, td,table { /* table elements 表格元素 */
+    margin: 0;
+    padding: 0;
+}
+table{
+	border-spacing: 10px;
+}
+body,
+button, input, select, textarea { /* for ie */
+    /*font: 12px/1 Tahoma, Helvetica, Arial, "宋体", sans-serif;*/
+    font: 12px/1 Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif; /* 用 ascii 字符表示，使得在任何编码下都无问题 */
+}
+html {
+  height: 100%;
+  width: 100%;
+  display: table;
+}
+
+body {
+  display: table-cell;
+  height: 100%;
+}
+
+h1 { font-size: 18px; /* 18px / 12px = 1.5 */ }
+h2 { font-size: 16px; }
+h3 { font-size: 14px; }
+h4, h5, h6 { font-size: 100%; }
+
+a:link{
+	color: black;
+}
+a:visited{
+	color: blue;
+}
+a:hover{
+	color: blue;
+	text-decoration: underline;
+}
+a:active{
+	color: black;
+	text-decoration: none;
+}
+/*        初始化            */
+
+body{
+	font-size: 14px;
+	background: url("/images/register.jpg"); 
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+#head{
+	height: 30px;
+	background: rgb(170,170,170,0.4);
+	width: 100%;
+	overflow: hidden;
+	margin-bottom: 20px;
+}
+#head div{
+	height: 24px;
+	margin-top: 3px;
+	margin-left: 30px;
+	overflow: hidden;
+
+}
+
+#head img{
+	float: left;
+	height: 24px;
+}
+
+#head #kouhao{
+	float:left;
+	border-left: 1px solid black;
+	line-height: 24px;
+	margin-left: 5px;
+	padding-left: 5px;
+}
+
+#head #login{
+	float: right;
+	line-height: 24px;
+	margin-right: 20px;
+}
+
+#head>div{
+	clear: both;
+}
+
+#content{
+	min-height: 500px;
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 0px;
+}
+.leftSide{
+	display: inline-block;
+	width: 200px;
+	min-height: 500px;
+}
+.midSide{
+	display: inline-block;
+	width: 600px;
+	min-height: 500px;
+	overflow: hidden;
+	font-size: 14px;
+}
+.rightSide{
+	display: inline-block;
+	width:200px;
+	min-height: 500px;
+}
+
+.itip{
+	color: red;
+}
+#rtip{
+	text-align: center;
+	color: red
+	font-weight:bold;
+	font-size: 20px;
+}
+tr td:first-child{
+	width: 40%;
+	padding-right: 10px;
+	text-align: right;
+}
+tr #submit{
+	text-align: center;
+}
+
+form{
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+}
+tr{
+	height: 30px;
+}
+#thead{
+	text-align: center;
+	font-size: 24px;
+}
+tr input{
+	height: 18px;
+	width: 200px;
+	outline: none;
+	border: 1px solid gray;
+	border-radius: 3px;
+	font-weight: bolder;
+}
+
+#commit,#reset{
+	width: 48px;
+	height: 24px;
+}
+
+#t_footer{
+	text-align: center;
+	font-size: 12px;
+}
+input.error{border: 1px solid red;}
+
+label.error {
+
+  padding-left: 8px;
+
+  padding-bottom: 2px;
+
+  font-weight: bold;
+
+  color: #EA5200;
+}
+
+input.change::-webkit-input-placeholder{
+    color: #c6c6c6;
+}
+input.change::-moz-placeholder{
+    color: #c6c6c6;
+}
+input.change::-ms-input-placeholder{
+    color: #c6c6c6;
+}
