@@ -1,0 +1,4 @@
+环境说明：
+    pip      18.1
+    django   2.1
+    pymysql  0.9.2
