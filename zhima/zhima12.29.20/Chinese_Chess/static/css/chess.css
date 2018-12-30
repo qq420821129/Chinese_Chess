@@ -1,0 +1,256 @@
+
+*{ /* table elements 表格元素 */
+    margin: 0;
+    padding: 0;
+}
+body,
+button, input, select, textarea { /* for ie */
+    /*font: 12px/1 Tahoma, Helvetica, Arial, "宋体", sans-serif;*/
+    font: 12px/1 Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif; /* 用 ascii 字符表示，使得在任何编码下都无问题 */
+}
+
+h1 { font-size: 18px; /* 18px / 12px = 1.5 */ }
+h2 { font-size: 16px; }
+h3 { font-size: 14px; }
+h4, h5, h6 { font-size: 100%; }
+
+input{
+    outline: none;
+}
+
+body{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+  display: table;
+}
+
+#box{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+}
+#left{
+    width: 70%;
+    height: 100%;
+    position: relative;
+    background: blue;
+    float: left;
+    
+}
+#right{
+    width: 30%;
+    height: 100%;
+    position: relative;
+    float: right;
+    background-color: red;
+}
+#board{
+    width: 401px;
+    height: 451px;
+    padding: 30px;
+    margin: 0 auto;
+    top: 15%;
+    position: relative;
+    background: lightgray;
+    border: 3px solid gray; 
+    /*border-radius: 3px;*/
+    box-shadow: 0 0 25px rgb(204,204,204,0.35);
+}
+#line{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#rows{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.row{
+    width: 1px;
+    height: 100%;
+    background: black;
+    float: left; 
+}
+
+.row:not(:last-child){
+    margin-right: 49px;
+}
+
+#lines{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: -100%;
+    overflow: hidden;
+}
+
+.line{
+    width: 100%;
+    height: 1px;
+    margin-bottom: 49px;
+    background: black;
+}
+
+#river{
+    width: 100%;
+    padding: 0 1px;
+    position: relative;
+    top: -200%;
+    height: 100%;
+    left: -1px;
+}
+#river p{
+    float: left;
+    width: 50%;
+    height: 49px;
+    line-height: 49px;
+    font-size: 32px;
+    text-align: center;
+    top: 201px;
+    position: relative;
+    background: lightgray;
+}
+#river p:last-child{
+    float: right;
+}
+
+#flowers{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: -300%;
+    overflow: hidden;
+}
+
+#top{
+    width: 100%;
+    margin-top: 50px;
+    height: 200px;
+}
+#bottom{
+    width: 100%;
+    height: 150px;
+}
+#fire,#tsoldier,#bsoldier{
+    height: 50px;
+    width: 100%;
+    overflow: hidden;
+}
+.blank{
+    width: 50px;
+    height: 50px;
+    position: relative;
+    float: left;
+}
+div.subb{
+    width: 5px;
+    height: 5px;
+    position: absolute;
+}
+div.rb{
+    bottom: 2px;
+    right: 2px;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black; 
+}
+div.lb{
+    bottom: 2px;
+    left: 3px;
+    border-left: 1px solid;
+    border-bottom: 1px solid black;
+}
+div.lt{
+    top: 3px;
+    left: 2px;
+    border-left: 1px solid;
+    border-top: 1px solid;
+}
+div.rt{
+    top: 3px;
+    right: 2px;
+    border-right: 1px solid;
+    border-top: 1px solid;
+}
+div#cross{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: -400%;
+    overflow: hidden;
+}
+#cross #T,#cross #B{
+    width: 100%;
+    height: 200px;
+    margin-bottom: 51px;
+    overflow: hidden;
+}
+#cross .cross{
+    margin: 0 auto;
+    width: 140px;
+    height: 1px;
+    position: relative;
+    top: 50px;
+    transform: rotate(45deg);
+    background: gray;
+}
+#cross .cross:last-child{
+    transform: rotate(-45deg);
+    margin-top: -1px;
+}
+#cross #B .cross{
+    top: 149px;
+}
+#board #chess{
+    width: 450px;
+    height: 500px;
+    margin: -25px;
+    top: -100%;
+    position: relative;
+    
+}
+#chess div{
+    width: 44px;
+    height: 44px;
+    float: left;
+    transition:box-shadow 0.35s,outline 0.35s,border 0.35s,transform 0.35s;
+    border: 3px solid rgba(0,0,0,0)
+}
+.CS{
+    border-radius: 500px;
+}
+.CS:hover{
+    box-shadow: 0 0 25pt rgba(0,0,0,0.35);
+    border:3px double rgba(0,0,0,0.15);
+    transform: scale(1.1,1.1);
+}
+#chess .C{
+    font-family: "华文楷体","微软雅黑 light","微软雅黑",Arial,sans-serif;
+    width: 40px;
+    height: 40px;
+    font-size: 25px;
+    line-height: 40px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border: 2px solid pink;
+    text-align:center;
+    box-shadow: 0 0 25pt rgba(0,0,0,0.35);
+    transition: transform 0.35s;
+    cursor: pointer;
+    background: #ccc;
+}
+#chess .D{
+    color: red;
+}

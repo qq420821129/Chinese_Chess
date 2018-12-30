@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/match.css">
+    <script type="text/javascript" src="../static/js/jquery_3_3_1.js"></script>
+    <script type="text/javascript" src="../static/js/match.js"></script>
+</head>
+<body>
+    <div id="content">
+        <div class="red">
+            <div class="icon"><img src="../static/images/shuai.png"></div>
+            <div class="nickName">{{ victory.user.username }}</div>
+            <div class="victory">
+                <span>胜<b>{{ victory.victory }}</b>场</span>
+                <span>负<b>{{ victory.defeat }}</b>场</span>
+                <span>平<b>{{ victory.draw }}</b>场</span>
+                <div><span>积分：<b>{{ victory.score }}</b>分</span></div>
+            </div>
+        </div>
+        <div class="black">
+            <div class="icon"></div>
+            <div class="nickName"></div>
+            <div class="victory">
+                <span>胜<b></b>场</span>
+                <span>负<b></b>场</span>
+                <span>平<b></b>场</span>
+            </div>
+        </div>
+        <div class="exchange" type="button"></div>
+        <div class="start">O&nasp;K</div>
+    </div>
+    <div id="footer">
+        <form action="chess" method="post">
+            <input type="text" name="access_token">
+        </form>
+        <div class="index">{{ first }}</div>
+        <div class="side">{{ side }}</div>
+    </div>
+</body>
+</html>
+
+
