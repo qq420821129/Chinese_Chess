@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>智码象棋</title>
+
+    <link rel="shortcut icon" href="../static/images/logo.ico" type="image/x-icon"/>
+    <script type="text/javascript" src="../static/js/jquery_3_3_1.js"></script>
+
+</head>
+<body id="body">
+    <div id="side" style='display: none'>{{ side }}</div>
+    <div id="box">
+        <div id="left">
+            <div id="board">
+                <div id="line">
+                    <div id="rows">
+                        <div class="row"></div>
+                        <div class="row"></div>
+                        <div class="row"></div>
+                        <div class="row"></div>
+                        <div class="row"></div>
+                        <div class="row"></div>
+                        <div class="row"></div>
+                        <div class="row"></div>
+                        <div class="row"></div>
+                    </div>
+                    <div id="lines">
+                        <div class="line"></div>
+                                <div class="line"></div>
+                                <div class="line"></div>
+                                <div class="line"></div>
+                                <div class="line"></div>
+                                <div class="line"></div>
+                                <div class="line"></div>
+                                <div class="line"></div>
+                                <div class="line"></div>
+                                <div class="line"></div>
+                    </div>
+                    <div id="river">
+                        <p>楚 河</p><p>汉 界</p>
+                    </div>
+                    <div id="flowers">
+                        <div id="top">
+                            <div id="fire">
+                                <div class="blank">
+                                    <div class="rb subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="lb subb"></div>
+                                </div>
+                                <div class="blank"></div>
+                                <div class="blank"></div>
+                                <div class="blank"></div>
+                                <div class="blank"></div>
+                                <div class="blank">
+                                    <div class="rb subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="lb subb"></div>
+                                </div>
+                            </div>
+                            <div id="tsoldier">
+                                <div class="blank">
+                                    <div class="lb subb"></div>
+                                    <div class="rt subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="lt subb"></div>
+                                    <div class="rb subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="lb subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="rb subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="lb subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="rb subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="lb subb"></div>
+                                    <div class="rt subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="lt subb"></div>
+                                    <div class="rb subb"></div>
+                                </div>
+                            </div>
+                            <div id="bsoldier">
+                                <div class="blank">
+                                    <div class="lt subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="rt subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="lt subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="rt subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="lt subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="rt subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="lt subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="rt subb"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="bottom">
+                            <div class="t-b-solider">
+                                <div class="blank">
+                                    <div class="lb subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="rb subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="lb subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="rb subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="lb subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="rb subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="lb subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="rb subb"></div>
+                                </div>
+                            </div>
+                            <div class="b-b-solider">
+                                <div class="blank">
+                                    <div class="rb subb"></div>
+                                    <div class="lt subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="lb subb"></div>
+                                    <div class="rt subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="lt subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="rt subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="lt subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="rt subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="rb subb"></div>
+                                    <div class="lt subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="rt subb"></div>
+                                    <div class="lb subb"></div>
+                                </div>
+                            </div>
+                            <div id="b-fire">
+                                <div class="blank">
+                                    <div class="rt subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="lt subb"></div>
+                                </div>
+                                <div class="blank"></div>
+                                <div class="blank"></div>
+                                <div class="blank"></div>
+                                <div class="blank"></div>
+                                <div class="blank">
+                                    <div class="rt subb"></div>
+                                </div>
+                                <div class="blank">
+                                    <div class="lt subb"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cross">
+                        <div id="T">
+                            <div class="cross"></div>
+                            <div class="cross"></div>
+                        </div>
+                        <div id="B">
+                            <div class="cross"></div>
+                            <div class="cross"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="chess">
+                    <div class="CS" id="CS0-0" onclick="onChose(0,0)">
+
+                    </div>
+                    <div class="CS" id="CS0-1" onclick="onChose(0,1)">
+
+                    </div>
+                    <div class="CS" id="CS0-2" onclick="onChose(0,2)">
+
+                    </div>
+                    <div class="CS" id="CS0-3" onclick="onChose(0,3)">
+
+                    </div>
+                    <div class="CS" id="CS0-4" onclick="onChose(0,4)">
+
+                    </div>
+                    <div class="CS" id="CS0-5" onclick="onChose(0,5)">
+
+                    </div>
+                    <div class="CS" id="CS0-6" onclick="onChose(0,6)">
+
+                    </div>
+                    <div class="CS" id="CS0-7" onclick="onChose(0,7)">
+
+                    </div>
+                    <div class="CS" id="CS0-8" onclick="onChose(0,8)">
+
+                    </div>
+                    <div class="CS" id="CS1-0" onclick="onChose(1,0)"></div>
+                    <div class="CS" id="CS1-1" onclick="onChose(1,1)"></div>
+                    <div class="CS" id="CS1-2" onclick="onChose(1,2)"></div>
+                    <div class="CS" id="CS1-3" onclick="onChose(1,3)"></div>
+                    <div class="CS" id="CS1-4" onclick="onChose(1,4)"></div>
+                    <div class="CS" id="CS1-5" onclick="onChose(1,5)"></div>
+                    <div class="CS" id="CS1-6" onclick="onChose(1,6)"></div>
+                    <div class="CS" id="CS1-7" onclick="onChose(1,7)"></div>
+                    <div class="CS" id="CS1-8" onclick="onChose(1,8)"></div>
+                    <div class="CS" id="CS2-0" onclick="onChose(2,0)"></div>
+                    <div class="CS" id="CS2-1" onclick="onChose(2,1)">
+
+                    </div>
+                    <div class="CS" id="CS2-2" onclick="onChose(2,2)"></div>
+                    <div class="CS" id="CS2-3" onclick="onChose(2,3)"></div>
+                    <div class="CS" id="CS2-4" onclick="onChose(2,4)"></div>
+                    <div class="CS" id="CS2-5" onclick="onChose(2,5)"></div>
+                    <div class="CS" id="CS2-6" onclick="onChose(2,6)"></div>
+                    <div class="CS" id="CS2-7" onclick="onChose(2,7)">
+
+                    </div>
+                    <div class="CS" id="CS2-8" onclick="onChose(2,8)"></div>
+                    <div class="CS" id="CS3-0" onclick="onChose(3,0)">
+
+                    </div>
+                    <div class="CS" id="CS3-1" onclick="onChose(3,1)"></div>
+                    <div class="CS" id="CS3-2" onclick="onChose(3,2)">
+
+                    </div>
+                    <div class="CS" id="CS3-3" onclick="onChose(3,3)"></div>
+                    <div class="CS" id="CS3-4" onclick="onChose(3,4)">
+
+                    </div>
+                    <div class="CS" id="CS3-5" onclick="onChose(3,5)"></div>
+                    <div class="CS" id="CS3-6" onclick="onChose(3,6)">
+
+                    </div>
+                    <div class="CS" id="CS3-7" onclick="onChose(3,7)"></div>
+                    <div class="CS" id="CS3-8" onclick="onChose(3,8)">
+
+                    </div>
+                    <div class="CS" id="CS4-0" onclick="onChose(4,0)"></div>
+                    <div class="CS" id="CS4-1" onclick="onChose(4,1)"></div>
+                    <div class="CS" id="CS4-2" onclick="onChose(4,2)"></div>
+                    <div class="CS" id="CS4-3" onclick="onChose(4,3)"></div>
+                    <div class="CS" id="CS4-4" onclick="onChose(4,4)"></div>
+                    <div class="CS" id="CS4-5" onclick="onChose(4,5)"></div>
+                    <div class="CS" id="CS4-6" onclick="onChose(4,6)"></div>
+                    <div class="CS" id="CS4-7" onclick="onChose(4,7)"></div>
+                    <div class="CS" id="CS4-8" onclick="onChose(4,8)"></div>
+                    <div class="CS" id="CS5-0" onclick="onChose(5,0)"></div>
+                    <div class="CS" id="CS5-1" onclick="onChose(5,1)"></div>
+                    <div class="CS" id="CS5-2" onclick="onChose(5,2)"></div>
+                    <div class="CS" id="CS5-3" onclick="onChose(5,3)"></div>
+                    <div class="CS" id="CS5-4" onclick="onChose(5,4)"></div>
+                    <div class="CS" id="CS5-5" onclick="onChose(5,5)"></div>
+                    <div class="CS" id="CS5-6" onclick="onChose(5,6)"></div>
+                    <div class="CS" id="CS5-7" onclick="onChose(5,7)"></div>
+                    <div class="CS" id="CS5-8" onclick="onChose(5,8)"></div>
+                    <div class="CS" id="CS6-0" onclick="onChose(6,0)">
+
+                    </div>
+                    <div class="CS" id="CS6-1" onclick="onChose(6,1)"></div>
+                    <div class="CS" id="CS6-2" onclick="onChose(6,2)">
+
+                    </div>
+                    <div class="CS" id="CS6-3" onclick="onChose(6,3)"></div>
+                    <div class="CS" id="CS6-4" onclick="onChose(6,4)">
+
+                    </div>
+                    <div class="CS" id="CS6-5" onclick="onChose(6,5)"></div>
+                    <div class="CS" id="CS6-6" onclick="onChose(6,6)">
+
+                    </div>
+                    <div class="CS" id="CS6-7" onclick="onChose(6,7)"></div>
+                    <div class="CS" id="CS6-8" onclick="onChose(6,8)">
+
+                    </div>
+                    <div class="CS" id="CS7-0" onclick="onChose(7,0)"></div>
+                    <div class="CS" id="CS7-1" onclick="onChose(7,1)">
+
+                    </div>
+                    <div class="CS" id="CS7-2" onclick="onChose(7,2)"></div>
+                    <div class="CS" id="CS7-3" onclick="onChose(7,3)"></div>
+                    <div class="CS" id="CS7-4" onclick="onChose(7,4)"></div>
+                    <div class="CS" id="CS7-5" onclick="onChose(7,5)"></div>
+                    <div class="CS" id="CS7-6" onclick="onChose(7,6)"></div>
+                    <div class="CS" id="CS7-7" onclick="onChose(7,7)">
+
+                    </div>
+                    <div class="CS" id="CS7-8" onclick="onChose(7,8)"></div>
+                    <div class="CS" id="CS8-0" onclick="onChose(8,0)"></div>
+                    <div class="CS" id="CS8-1" onclick="onChose(8,1)"></div>
+                    <div class="CS" id="CS8-2" onclick="onChose(8,2)"></div>
+                    <div class="CS" id="CS8-3" onclick="onChose(8,3)"></div>
+                    <div class="CS" id="CS8-4" onclick="onChose(8,4)"></div>
+                    <div class="CS" id="CS8-5" onclick="onChose(8,5)"></div>
+                    <div class="CS" id="CS8-6" onclick="onChose(8,6)"></div>
+                    <div class="CS" id="CS8-7" onclick="onChose(8,7)"></div>
+                    <div class="CS" id="CS8-8" onclick="onChose(8,8)"></div>
+                    <div class="CS" id="CS9-0" onclick="onChose(9,0)">
+
+                    </div>
+                    <div class="CS" id="CS9-1" onclick="onChose(9,1)">
+
+                    </div>
+                    <div class="CS" id="CS9-2" onclick="onChose(9,2)">
+
+                    </div>
+                    <div class="CS" id="CS9-3" onclick="onChose(9,3)">
+
+                    </div>
+                    <div class="CS" id="CS9-4" onclick="onChose(9,4)">
+
+                    </div>
+                    <div class="CS" id="CS9-5" onclick="onChose(9,5)">
+
+                    </div>
+                    <div class="CS" id="CS9-6" onclick="onChose(9,6)">
+
+                    </div>
+                    <div class="CS" id="CS9-7" onclick="onChose(9,7)">
+
+                    </div>
+                    <div class="CS" id="CS9-8" onclick="onChose(9,8)">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="right">
+            <div class="content">
+                <div id="info">
+                    <div class="top">
+                        <div class="ttime">局时&nbsp;20:00</div>
+                        <div class="stime">步时&nbsp;02:00</div>
+                        <div class="ctime">读秒&nbsp;01:00</div>
+                        <button>X</button>
+                    </div>
+                    <div class="account">
+                        <p class="nostep">无吃子步数 <b>0</b></p>
+                        <p class="tstep">总步数 <b>0</b></p>
+                        <div class="red">
+                            <div class="score">{{ user.victory.score }}</div>
+                            <p>{{ user.username }}</p>
+                            <div class="inred">
+                                <p class="total_time">局时 <b>20:00</b></p>
+                                <p class="step_time">步时 <b>02:00</b></p>
+                            </div>
+                        </div>
+                        <div class="black">
+                            <div class="score">{{ other.victory.score }}</div>
+                            <p>{{ other.username }}</p>
+                            <div class="inblack">
+                                <p class="total_time">局时 <b>20:00</b></p>
+                                <p class="step_time">步时 <b>02:00</b></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="function">
+                        <button class="draw">求和</button>
+                        <button class="lose">认输</button>
+                        <button class="wback">悔棋</button>
+                    </div>
+                </div>
+                <div id="chat">
+                    <div class="box">
+                        <div class="msg"></div>
+                        <div class="select">
+                            <select name="destination" id="select">
+                                <option value="all">所有玩家</option>
+                                <option value="{{ other.username }}">{{ other.username }}</option>
+                            </select>
+                            <select name="autoword" id="autoword">
+                                <option value="-1">短语</option>
+                                <option value="1">大家好!</option>
+                                <option value="2">不要走!</option>
+                                <option value="3">快点呀!天都黑了!</option>
+                            </select>
+                        </div>
+                        <div class="send">
+                            <input id="msg" type="text" autocomplete="off">
+                            <div id="send">发&nbsp;送</div>
+                        </div>
+                    </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <link rel="stylesheet" type="text/css" href="../static/css/chess.css">
+    <script type="text/javascript" src="../static/js/chess.js"></script>
+</body>
+</html>

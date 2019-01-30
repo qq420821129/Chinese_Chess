@@ -1,0 +1,416 @@
+
+*{ /* table elements 表格元素 */
+    margin: 0;
+    padding: 0;
+}
+body,
+button, input, select, textarea { /* for ie */
+    /*font: 12px/1 Tahoma, Helvetica, Arial, "宋体", sans-serif;*/
+    font: 12px/1 Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif; /* 用 ascii 字符表示，使得在任何编码下都无问题 */
+}
+
+h1 { font-size: 18px; /* 18px / 12px = 1.5 */ }
+h2 { font-size: 16px; }
+h3 { font-size: 14px; }
+h4, h5, h6 { font-size: 100%; }
+
+input{
+    outline: none;
+}
+
+body{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: lightgray;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+  display: table;
+}
+
+#box{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+}
+#left{
+    width: 70%;
+    height: 100%;
+    position: relative;
+    float: left;
+
+}
+#right{
+    width: 30%;
+    height: 100%;
+    position: relative;
+    float: right;
+
+    overflow: hidden;
+}
+#board{
+    width: 401px;
+    height: 451px;
+    padding: 30px;
+    margin: 0 auto;
+    top: 15%;
+    position: relative;
+    background: lightgray;  /*棋盘颜色*/
+    border: 3px solid gray;
+    border-radius: 3px;
+    box-shadow: 0 0 25px rgba(204,204,204,0.35);
+}
+#line{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#rows{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.row{
+    width: 1px;
+    height: 100%;
+    background: black;
+    float: left;
+}
+
+.row:not(:last-child){
+    margin-right: 49px;
+}
+
+#lines{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: -100%;
+    overflow: hidden;
+}
+
+.line{
+    width: 100%;
+    height: 1px;
+    margin-bottom: 49px;
+    background: black;
+}
+
+#river{
+    width: 100%;
+    padding: 0 1px;
+    position: relative;
+    top: -200%;
+    height: 100%;
+    left: -1px;
+}
+#river p{
+    float: left;
+    width: 50%;
+    height: 49px;
+    line-height: 49px;
+    font-size: 32px;
+    text-align: center;
+    top: 201px;
+    position: relative;
+    background: lightgray;
+}
+#river p:last-child{
+    float: right;
+}
+
+#flowers{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: -300%;
+    overflow: hidden;
+}
+
+#top{
+    width: 100%;
+    margin-top: 50px;
+    height: 200px;
+}
+#bottom{
+    width: 100%;
+    height: 150px;
+}
+#fire,#tsoldier,#bsoldier{
+    height: 50px;
+    width: 100%;
+    overflow: hidden;
+}
+.blank{
+    width: 50px;
+    height: 50px;
+    position: relative;
+    float: left;
+}
+div.subb{
+    width: 5px;
+    height: 5px;
+    position: absolute;
+}
+div.rb{
+    bottom: 2px;
+    right: 2px;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+div.lb{
+    bottom: 2px;
+    left: 3px;
+    border-left: 1px solid;
+    border-bottom: 1px solid black;
+}
+div.lt{
+    top: 3px;
+    left: 2px;
+    border-left: 1px solid;
+    border-top: 1px solid;
+}
+div.rt{
+    top: 3px;
+    right: 2px;
+    border-right: 1px solid;
+    border-top: 1px solid;
+}
+div#cross{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: -400%;
+    overflow: hidden;
+}
+#cross #T,#cross #B{
+    width: 100%;
+    height: 200px;
+    margin-bottom: 51px;
+    overflow: hidden;
+}
+#cross .cross{
+    margin: 0 auto;
+    width: 140px;
+    height: 1px;
+    position: relative;
+    top: 50px;
+    transform: rotate(45deg);
+    background: gray;
+}
+#cross .cross:last-child{
+    transform: rotate(-45deg);
+    margin-top: -1px;
+}
+#cross #B .cross{
+    top: 149px;
+}
+#board #chess{
+    width: 450px;
+    height: 500px;
+    margin: -25px;
+    top: -100%;
+    position: relative;
+
+}
+#chess div{
+    width: 44px;
+    height: 44px;
+    float: left;
+    transition:box-shadow 0.35s,outline 0.35s,border 0.35s,transform 0.35s;
+    border: 3px solid rgba(0,0,0,0)
+}
+.CS{
+    border-radius: 500px;
+}
+.CS:hover{
+    box-shadow: 0 0 25pt rgba(0,0,0,0.35);
+    border:3px double rgba(0,0,0,0.15);
+    transform: scale(1.1,1.1);
+}
+#chess .C{
+    font-family: "华文楷体","微软雅黑 light","微软雅黑",Arial,sans-serif;
+    width: 40px;
+    height: 40px;
+    font-size: 25px;
+    line-height: 40px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border: 2px solid pink;
+    text-align:center;
+    box-shadow: 0 0 25pt rgba(0,0,0,0.35);
+    transition: transform 0.35s;
+    cursor: pointer;
+    background: #ccc;
+}
+#chess .D{
+    color: red;
+}
+
+/*------------------------------------------RIGHT SIDE----------------------------------------------------------*/
+
+#right .content{
+    position: absolute;
+    top: 50%;
+    height: 662px;
+    margin-top: -331px;
+    padding: 0 10px;
+    min-width: 340px;
+    font-size: 16px;
+    overflow: hidden;
+    background: white;
+}
+
+#info, #chat{
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+
+}
+#chat{
+    padding-top: 10px;
+
+}
+#info>.top,#info>.account,#info>.function{
+    width: 340px;
+    margin: 10px auto 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid lightgray;
+    overflow: hidden;
+}
+.top>div{
+    float: left;
+    width: 25%;
+    height: 24px;
+    color: lightgray;
+    line-height: 24px;
+}
+.top>div:first-child{
+    margin-left: 40px;
+}
+.top>button{
+    float: right;
+    width: 24px;
+    height: 22px;
+    border: 1px solid black;
+    line-height: 22px;
+}
+.account{
+    width: 100%;
+    overflow: hidden;
+}
+.account>p{
+    width: 50%;
+    float: left;
+    text-align: center;
+}
+.account>.red,.account>.black{
+    width: 45%;
+    font-size: 14px;
+}
+.account>.red{
+    float: left;
+    margin-left: 10px;
+}
+.account>.black{
+    float: right;
+    margin-right: 10px;
+}
+.red>.score, .black>.score{
+    margin-top: 10px;
+    height: 16px;
+    font-size: 14px;
+    line-height: 16px;
+    color: #fff;
+    text-align: center;
+    border-radius: 3px;
+}
+.black>.score{
+    background: black;
+}
+.red>.score{
+    background: red;
+}
+.red>p, .black>p{
+    background: #fff;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    border-radius: 3px;
+}
+.inred, .inblack{
+    margin-top: 10px;
+    overflow: hidden;
+    font-size: 28px;
+}
+.inred>p,.inblack>p{
+    margin-top: 10px;
+}
+.function>button{
+    margin-left: 10px;
+    width: 50px;
+    height: 30px;
+    border-radius: 3px;
+    outline: none;
+}
+#chat>.box{
+    width: 340px;
+    margin: 0 auto;
+}
+#chat>.box>.msg{
+    background: #fff;
+    height: 300px;
+    margin: 0 10px;
+    overflow: auto;
+    border: 1px solid black;
+}
+select{
+    border: 0;
+    outline: none;
+    float: left;
+}
+.select{
+    margin: 0 10px;
+    overflow: hidden;
+}
+.select #select{
+    margin-top: 10px;
+    width: 80%;
+}
+.select #autoword{
+    width: 20%;
+    margin-top: 10px;
+}
+.send{
+    height: 24px;
+    width: 320px;
+    margin: 10px;
+    overflow: hidden;
+}
+.send>input{
+    outline: none;
+    border: 0;
+    float: left;
+    width: 80%;
+    height: 24px;
+    line-height: 24px;
+    font-size: 16px;
+}
+.send #send{
+    background: gray;
+    height: 24px;
+    width: 20%;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    float: left;
+}

@@ -1,0 +1,705 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="聚人气游戏网，聚人气中国象棋，网页版多人联网象棋游戏，有游戏大厅的网页游戏，支持PC、手机、平板多种终端，多人同时在线下棋及聊天交友，最好玩的网页中国象棋游戏。">
+    <meta name="keywords"
+          content="中国象棋，聚人气网，www.jurenqi.com，网页象棋，在线对弈，联网象棋，联机象棋游戏，在线对战游戏，聚人气，聚人气象棋，网页联网象棋，聚人气游戏，网页版中国象棋联网游戏">
+    <title>网页版中国象棋联网游戏</title>
+    <style type="text/css">
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden
+    }
+
+    body, button, input, select, textarea {
+        font: 0.8125em/1em \5b8b\4f53, Tahoma, Arial;
+    }
+
+    body {
+        background: #eef7f7 url('{% static 'images/chessgame_bg.gif' %}') repeat 0 0;
+    }
+
+    address, cite, dfn, em, var {
+        font-style: normal
+    }
+
+    ol, ul {
+        list-style: none
+    }
+
+    a {
+        text-decoration: none
+    }
+
+    a:hover {
+        text-decoration: underline
+    }
+
+    button, input, select, textarea {
+        font-size: 100%
+    }
+
+    #out_tipe {
+        position: relative;
+        top: 25px;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: 0 auto;
+        padding: 0 10px;
+        height: 100px;
+        text-align: center
+    }
+
+    a.out_btn {
+        display: block;
+        position: relative;
+        margin: 0;
+        padding: 8px 0;
+        width: 100%;
+        background: #DB5705;
+        font: 700 16px "Microsoft Yahei", \9ed1\4f53, \5b8b\4f53;
+        color: #fff;
+        text-shadow: 1px 1px 0 #8e3a05;
+        text-align: center;
+        text-decoration: none;
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        border-radius: 8px;
+        -webkit-box-shadow: 0 5px 0 rgba(219, 31, 5, 1), 0 5px 6px rgba(0, 0, 0, .7);
+        -moz-box-shadow: 0 5px 0 rgba(219, 31, 5, 1), 0 5px 6px rgba(0, 0, 0, .7);
+        box-shadow: 0 5px 0 rgba(219, 31, 5, 1), 0 5px 6px rgba(0, 0, 0, .7);
+        transition: all .1s ease 0s;
+        -moz-transition: all .1s ease 0s;
+        -webkit-transition: all .1s ease 0s;
+        -o-transition: all .1s ease 0s
+    }
+
+    a.out_btn:active {
+        position: relative;
+        top: 3px;
+        -webkit-box-shadow: 0 3px 0 rgba(219, 31, 5, 1), 0 3px 6px rgba(0, 0, 0, .9);
+        -moz-box-shadow: 0 3px 0 rgba(219, 31, 5, 1), 0 3px 6px rgba(0, 0, 0, .9);
+        box-shadow: 0 3px 0 rgba(219, 31, 5, 1), 0 3px 6px rgba(0, 0, 0, .9)
+    }
+
+    .popup_text {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 60px;
+        font-family: \5b8b\4f53, Arial, Tahoma;
+        font-size: 22px;
+        color: #fff;
+        line-height: 30px;
+        text-align: center
+    }
+
+    .popup_r {
+        float: right;
+        width: 30px
+    }
+
+    .pm_close {
+        position: absolute;
+        z-index: 100;
+        margin-top: -18px;
+        margin-left: 20px;
+        padding: 0;
+        border: 1px solid #000;
+        width: 26px;
+        height: 26px;
+        font-size: 0;
+        background: #fff no-repeat center center;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        cursor: pointer
+    }
+
+    .popup_tips {
+        display: none;
+        position: fixed;
+        z-index: 99;
+        top: 0;
+        right: 220px;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        padding: 20px;
+        border: 3px solid #fff;
+        width: 400px;
+        height: 60px;
+        background-color: red;
+        text-align: center;
+        -webkit-box-shadow: 0 4px 0 rgba(153, 181, 192, 1), 0 4px 10px rgba(0, 0, 0, .7);
+        -moz-box-shadow: 0 4px 0 rgba(153, 181, 192, 1), 0 4px 10px rgba(0, 0, 0, .7);
+        box-shadow: 0 4px 0 rgba(153, 181, 192, 1), 0 4px 10px rgba(0, 0, 0, .7);
+        overflow: hidden
+    }
+
+    #topbar {
+        margin: 0 auto;
+        padding: 0;
+        border-top: 1px solid #a6bdc7;
+        border-bottom: 1px solid #a6bdc7;
+        width: 1000px;
+        height: 30px;
+        background-color: #bcdfdb
+    }
+
+    #table_title {
+        float: left;
+        width: 780px;
+        height: 30px;
+        font-size: 0;
+        color: #bcdfdb
+    }
+
+    #logo {
+        float: left;
+        width: 180px;
+        height: 30px;
+        background: url('{% static 'images/logo.ico' %}') no-repeat 0 0
+    }
+
+    #table_title_text {
+        float: left;
+        width: 300px;
+        font-family: \5b8b\4f53, Arial, Tahoma;
+        font-size: 12px;
+        color: #000cff;
+        line-height: 30px;
+        text-align: left
+    }
+
+    #user_title {
+        float: right;
+        border-left: 1px solid #a6bdc7;
+        width: 219px;
+        height: 30px;
+        font-family: \5b8b\4f53, Arial, Tahoma;
+        font-size: 12px;
+        color: #000;
+        line-height: 30px;
+        text-align: left
+    }
+
+    #user_title span {
+        padding-left: 8px
+    }
+
+    #user_tablenum {
+        float: right;
+        padding-left: 10px;
+        width: 54px;
+        border-left: 1px solid #a6bdc7;
+        height: 30px;
+        font-family: \5b8b\4f53, Arial, Tahoma;
+        font-size: 12px;
+        color: #000;
+        line-height: 30px;
+        text-align: left
+    }
+
+    #gamebox {
+        margin: 0 auto;
+        padding: 0;
+        width: 1000px;
+        height: 100%;
+        background-color: #eef7f7
+    }
+
+    #hallbox {
+        float: left;
+        display: block;
+        width: 780px;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch
+    }
+
+    #tablebox {
+        margin: 0;
+        padding: 0;
+        width: 764px
+    }
+
+    #table_list {
+        margin: 0;
+        padding: 2px;
+        width: 760px;
+        font-size: 0
+    }
+
+    #table_list ul {
+        margin: 0;
+        padding: 0;
+        width: 760px;
+        font-size: 0
+    }
+
+    #table_list ul li {
+        float: left;
+        display: inline;
+        margin: 0;
+        padding: 0 15px;
+        padding-top: 17px;
+        border: 1px solid #eef7f7;
+        background: url('{% static 'images/table.jpg' %}') no-repeat center 15px;
+        width: 158px;
+        height: 101px;
+        overflow: hidden
+    }
+
+    #table_list ul li.curr {
+        border: 1px solid #0695fd
+    }
+
+    .table_l {
+        float: left;
+        padding-right: 8px;
+        width: 48px
+    }
+
+    .table_r {
+        float: right;
+        padding-left: 8px;
+        width: 48px
+    }
+
+    .table_face {
+        margin: 2px 3px;
+        padding: 0;
+        border: 1px solid #eef7f7;
+        width: 40px;
+        height: 40px;
+        font-size: 0;
+        cursor: pointer
+    }
+
+    .tmark {
+        border: 1px solid #080
+    }
+
+    .table_name {
+        margin: 0;
+        padding-top: 4px;
+        width: 48px;
+        font-size: 12px;
+        color: #000;
+        line-height: 14px;
+        text-align: center;
+        word-break: break-all;
+        word-wrap: break-word;
+        overflow: hidden;
+        cursor: default
+    }
+
+    .table_name span {
+        display: inline-block;
+        font-size: 12px;
+        color: #000;
+        line-height: 14px;
+        text-align: left;
+        word-break: break-all;
+        word-wrap: break-word;
+        overflow: hidden
+    }
+
+    .table_c {
+        float: left;
+        width: 46px
+    }
+
+    .table_bg {
+        margin: 0;
+        padding: 0;
+        width: 46px;
+        height: 46px;
+        font-size: 0
+    }
+
+    .table_bg p {
+        margin: 0;
+        padding: 0;
+        background: url('{% static 'images/table_bg.jpg' %}') no-repeat 0 0;
+        width: 46px;
+        height: 46px;
+        font-size: 0
+    }
+
+    .table_num {
+        margin: 0;
+        padding-top: 18px;
+        height: 16px;
+        font-family: "Lucida Grande", Helvetica, Verdana;
+        font-size: 13px;
+        color: #080;
+        font-weight: 700;
+        text-align: center;
+        cursor: default
+    }
+
+    #sidebox {
+        float: right;
+        display: block;
+        border-left: 1px solid #a6bdc7;
+        width: 219px;
+        height: 100%
+    }
+
+    #userbox {
+        margin: 0;
+        padding: 0;
+        width: 219px;
+        height: 60%;
+        background-color: #f2fafa;
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch
+    }
+
+    #user_list {
+        margin: 0;
+        padding: 2px 0;
+        width: 219px;
+        font-size: 0
+    }
+
+    #user_list ul {
+        margin: 0;
+        padding: 0;
+        width: 219px;
+        font-size: 0
+    }
+
+    #user_list ul li {
+        margin: 0;
+        padding: 0;
+        padding-left: 8px;
+        width: 210px;
+        height: 18px;
+        font-family: \5b8b\4f53, Arial, Tahoma;
+        font-size: 12px;
+        color: #080;
+        line-height: 18px;
+        text-align: left;
+        white-space: nowrap;
+        overflow: hidden
+    }
+
+    #user_list ul li:nth-child(odd) {
+        background-color: #f2fafa
+    }
+
+    #user_list ul li:nth-child(even) {
+        background-color: #e2f9f9
+    }
+
+    #user_list ul li.my {
+        font-weight: bold
+    }
+
+    #user_list ul li .uname {
+        float: left;
+        width: 148px;
+        height: 18px;
+        line-height: 18px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: default
+    }
+
+    #user_list ul li .utable {
+        float: left;
+        padding-left: 12px;
+        width: 48px;
+        height: 18px;
+        line-height: 18px;
+        cursor: default
+    }
+
+    #user_list ul li .ut_bg {
+        background: no-repeat right 3px
+    }
+
+    #msgbox {
+        margin: 0;
+        padding: 0;
+        border-top: 1px solid #a6bdc7;
+        width: 219px;
+        height: 40%;
+        background-color: #fff;
+        overflow: hidden
+    }
+
+    #message {
+        margin: 0;
+        padding: 0;
+        padding-left: 6px;
+        width: 213px;
+        height: 90%;
+        background-color: #fff;
+        font-size: 12px;
+        color: #073985;
+        line-height: 16px;
+        cursor: default;
+        word-break: break-all;
+        word-wrap: break-word;
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch
+    }
+
+    #message b {
+        color: #b50000;
+        font-weight: 400
+    }
+
+    #message b.getname {
+        color: #080
+    }
+
+    #message b.getname span {
+        color: #b50000
+    }
+
+    #message b.logoutmsg {
+        color: #2a83e2
+    }
+
+    #message span {
+        color: #073985
+    }
+
+    #message span i {
+        color: #000;
+        font-style: normal
+    }
+
+    #message span.getmsg {
+        color: #080
+    }
+
+    .chat .name, .chat .yname, .login .name {
+        cursor: pointer
+    }
+
+    .msend {
+        margin: 0;
+        padding: 0;
+        width: 219px;
+        height: 30px;
+        background-color: #eef7f7
+    }
+
+    .mmsg_l {
+        float: left;
+        padding-top: 3px;
+        width: 179px
+    }
+
+    .mmsg_r {
+        float: right;
+        padding-top: 3px;
+        width: 40px
+    }
+
+    .on_ipt {
+        margin: 0;
+        padding: 3px 1px 4px 4px;
+        border-top: 1px solid #5b7d90;
+        border-right: 1px solid #baced7;
+        border-bottom: 1px solid #baced7;
+        border-left: 1px solid #5b7d90;
+        background-color: #fff;
+        width: 174px;
+        height: 16px;
+        font-family: Tahoma, SimSun, Arial, Verdana;
+        font-size: 12px;
+        outline: 0;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0
+    }
+
+    .on_smt {
+        padding: 3px 0 4px 0;
+        border: none;
+        width: 40px;
+        height: 25px;
+        font-family: Tahoma, Arial, Verdana;
+        font-size: 12px;
+        color: #2a4542;
+        text-align: center;
+        text-decoration: none;
+        background: #c4ddda;
+        background: -moz-linear-gradient(top, #6fa39d 0, #c4ddda 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #6fa39d), color-stop(100%, #c4ddda));
+        background: -o-linear-gradient(top, #6fa39d 0, #c4ddda 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6fa39d', endColorstr='#c4ddda', GradientType=0);
+        background: -ms-linear-gradient(top, #6fa39d 0, #c4ddda 100%);
+        background: linear-gradient(top, #6fa39d 0, #c4ddda 100%);
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0
+    }
+
+    @media (max-width: 999px) {
+        body, html {
+            overflow: hidden;
+            overflow-x: auto
+        }
+
+        #gamebox, #topbar {
+            width: 768px
+        }
+
+        #hallbox, #table_title, #tablebox {
+            width: 574px
+        }
+
+        #table_list, #table_list ul {
+            width: 570px
+        }
+
+        #user_tablenum {
+            width: 51px
+        }
+
+        #message {
+            width: 187px
+        }
+
+        #msgbox, #sidebox, #user_title, #userbox, .msend {
+            width: 193px
+        }
+
+        .mmsg_l {
+            width: 153px
+        }
+
+        .on_ipt {
+            width: 149px
+        }
+
+        #user_list, #user_list ul, #user_list ul li {
+            width: 184px
+        }
+
+        #user_list ul li .uname {
+            width: 125px
+        }
+
+        #user_list ul li .utable {
+            width: 45px
+        }
+    }
+    </style>
+    <script src="{% static 'js/jquery_3_3_1.js' %}"></script>
+    <script src="{% static 'js/playground.js' %}"></script>
+</head>
+<body>
+<div id="popup_tips" class="popup_tips">
+    <div class="popup_r">
+        <div id="pm_close" class="pm_close"></div>
+    </div>
+    <div id="popup_text" class="popup_text"></div>
+</div>
+<div id="topbar">
+    <div id="table_title">
+        <div id="logo">知码象棋</div>
+        <div id="table_title_text">复制网址发送给好友，邀请ta来一起下棋吧!</div>
+        <strong id="online_num">0</strong></div>
+    <div id="user_title">
+        <div id="user_tablenum">桌号</div>
+        <span>在线玩家(<strong id="online">0</strong>)</span>
+    </div>
+</div>
+<div id="gamebox">
+    <div id="hallbox">
+        <div id="tablebox">
+            <div id="table_list">
+                <ul>
+                    {% for room in rooms %}
+                        <li id="{{ room.pk }}">
+                            <div class="table_l">
+                                <div class="table_face" id="{{ room.pk }}_2"><span id="{{ room.pk }}_2s"><img style="display: none" src="{% static 'images/01.gif' %}"
+                                                                                                              alt=""></span></div>
+                                <div class="table_name"><span></span></div>
+                            </div>
+                            <div class="table_c">
+                                <div class="table_bg" id="{{ room.ok }}_s">
+                                    <p></p>
+                                </div>
+                                <div class="table_num">{{ room.pk }}</div>
+                            </div>
+                            <div class="table_r">
+                                <div class="table_face" id="{{ room.pk }}_1"><span id="{{ room.pk }}_1s"><img style="display: none" src="{% static 'images/02.gif' %}"
+                                                                                                              alt=""></span></div>
+                                <div class="table_name"><span></span></div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                    <li id="1">{# 测试用 #}
+                        <div class="table_l">
+                            <div class="table_face" id="1_2"><span id="1_2s"></span></div>
+                            <div class="table_name"><span></span></div>
+                        </div>
+                        <div class="table_c">
+                            <div class="table_bg" id="1_s"></div>
+                            <div class="table_num">1</div>
+                        </div>
+                        <div class="table_r">
+                            <div class="table_face" id="1_1"><span id="1_1s"></span></div>
+                            <div class="table_name"><span></span></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="sidebox">
+        <div id="userbox">
+            <div id="user_list">
+                <ul>
+                    <li>
+                        <div class="uname">_虎子</div>
+                        <div class="utable"></div>
+                    </li>
+                </ul>{# 测试用 #}
+            </div>
+        </div>
+        <div id="msgbox">
+            <div id="message">
+                <div class="msg info">正在读取房间信息...<br><b>欢迎进入聚人气游戏网，如需更多帮助请访问</b> <a target="_blank"
+                                                                                    href="http://www.jurenqi.com/help">http://www.jurenqi.com/help</a><br><br><b>温馨提醒:</b><b
+                        class="getname">若木有对手，快加[<span>326216120</span>],QQ群里的许多小伙伴在等你来一起下棋噢！</b><br><br><b>走棋操作方法共两种：</b><br>1、先点击要行棋的棋子后，再点击要落子的交叉点上即可完成走棋；<br><br>2、可以直接拖动要行棋的棋子到要落子的交叉点上完成走棋（注意：在拖动棋子时不要松开手，落子时再松开）！
+                    <br><b class="conninfo">连接服务器成功</b>
+                </div>
+            </div>
+            <div class="msend">
+                <div class="mmsg_l"><label><input type="text" class="on_ipt" name="mchat" id="mchat"
+                                                  maxlength="150"></label></div>
+                <div class="mmsg_r"><label><input type="submit" class="on_smt" name="submit" id="send_mchat"
+                                                  value="发 送"></label></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

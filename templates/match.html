@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>智码象棋</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/match.css">
+
+    <link rel="shortcut icon" href="../static/images/logo.ico" type="image/x-icon"/>
+
+    <script type="text/javascript" src="../static/js/jquery_3_3_1.js"></script>
+    <script type="text/javascript" src="../static/js/match.js"></script>
+
+</head>
+<body>
+    <div class="out">退出</div>
+    <div id="content">
+        <div class="red">
+            <div class="icon"><img src="../static/images/shuai.png"></div>
+            <div class="nickName">{{ victory.user.username }}</div>
+            <div class="victory">
+                <span>胜<b>{{ victory.victory }}</b>场</span>
+                <span>负<b>{{ victory.defeat }}</b>场</span>
+                <span>平<b>{{ victory.draw }}</b>场</span>
+                <div><span>积分：<b>{{ victory.score }}</b>分</span></div>
+            </div>
+        </div>
+        <div class="black">
+            <div class="icon"><img src="../static/images/jiang.png"></div>
+            <div class="nickName">{{ other.username }}</div>
+            <div class="victory">
+                <span class="victory">胜<b>{{ other.victory.victory }}</b>场</span>
+                <span class="defeat">负<b>{{ other.victory.defeat }}</b>场</span>
+                <span class="draw">平<b>{{ other.victory.draw }}</b>场</span>
+                <div class="score"><span>积分：<b>{{ other.victory.score }}</b>分</span></div>
+            </div>
+        </div>
+            {#<div class="exchange" type="button"></div>#}
+        <div class="start">O&nbsp;K</div>
+    </div>
+    <div id="footer">
+        <form action="play" method="post">
+            <input type="text" name="access_token">
+            <input type="text" class="room" name="room" value="{{ room }}">
+            <input type="text" class="side" name="side" value="{{ side }}">
+            <input type="text" class="hide_uname" name="hide_uname" value="{{ victory.user.username }}">
+        </form>
+        <div class="index">{{ first }}</div>
+    </div>
+</body>
+</html>

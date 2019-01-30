@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block titleBlock %}
+    知码象棋 | 注册
+{% endblock %}
+
+{% block back_img %}
+    <style>
+        body{
+            background-repeat: no-repeat;
+            background-image: url("/static/images/register.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center center;
+            /*text-align: center;*/
+        }
+        .row{
+            filter:alpha(Opacity=0.9);
+            -moz-opacity: 0.9;
+            opacity: 0.9;
+        }
+        .panel-title{
+            text-align: center;
+        }
+    </style>
+
+{% endblock %}
+
+{% block content_block %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">注册</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form action="register" method="POST" autocomplete="off">
+                            {% csrf_token %}
+                            {% for field in register_form %}
+                                {% if forloop.counter == 4 %}
+                                    {{field.label}}{{ field }}{{field.error_messages}}
+                                    <p class="text-danger" id="tip">{{ field.errors.as_text }}</p>
+                                {% elif forloop.counter == 5 %}
+                                    {{field.label}}
+                                    <div class="input-group">
+                                        {{ field }}
+                                        <p id="send_code" class="input-group-addon" style="cursor:pointer">获取验证码</p>
+                                    </div>
+                                    {{field.error_messages}}
+                                    <p class="text-danger" id="danger">{{ field.errors.as_text }}</p>
+                                {% else %}
+                                    {{field.label}}{{ field }}{{field.error_messages}}
+                                    <p class="text-danger">{{ field.errors.as_text }}</p>
+                                {% endif %}
+
+                            {% endfor %}
+                            <span class="text-danger">{{ login_form.non_field_errors }}</span>
+                            <div class="clearfix"></div>
+                            <input type="submit" value="注册" class="btn btn-primary pull-right" id="submi">
+                            <a class="btn btn-primary pull-left" href="/">返回</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        $('#id_name').keyup(function(){
+            user_in = $("#id_name").val();
+            console.log(user_in);
+            $.ajax({
+                url:"echo",
+                type:"POST",
+                dataType:"json",
+                data:{"user":user_in},
+                success:function(data){
+                    if (data.data){
+                        $(".text-danger:first").text('* 此用户已存在');
+                    }else{
+                        $(".text-danger:first").text('');
+                    }
+                }
+            });
+        });
+    </script>
+{% endblock %}

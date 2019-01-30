@@ -1,0 +1,6 @@
+.table_bg p{
+    width: 46px;
+    height: 46px;
+    background: url('/static/images/table_bg.jpg') no-repeat 0 0;
+    display: none;
+}
